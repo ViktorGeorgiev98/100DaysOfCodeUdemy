@@ -1,11 +1,16 @@
-from turtle import Screen, Turtle
+from turtle import Screen
 import time
 
+from day_20_build_snake_game.scoreboard import Scoreboard
 from day_20_build_snake_game.snake import Snake
+from day_20_build_snake_game.food  import Food
 
 
 snake_moving = True
 snake = Snake()
+food = Food()
+scoreboard = Scoreboard()
+
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
@@ -25,9 +30,23 @@ while snake_moving:
     time.sleep(0.1)
     snake.move()
 
+#     collision with food
+    if snake.head.distance(food) < 15:
+        food.refresh()
+        scoreboard.increase_score()
+        snake.extend()
 
 
+#     collision with wall
+    if snake.head.xcor() > 290 or snake.head.xcor() < -290 or snake.head.ycor() > 290 or snake.head.ycor() < -290:
+        snake_moving = False
+        scoreboard.game_over()
 
+#   detect collision with tail
+for segment in snake.segments[1:]:
+    if snake.head.distance(segment) < 10:
+        snake_moving = False
+        scoreboard.game_over()
 
 
 
