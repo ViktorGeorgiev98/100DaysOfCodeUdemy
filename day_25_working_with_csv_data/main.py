@@ -23,10 +23,7 @@ while game_is_on:
         break
     elif answer_state == "Exit":
         all_states_as_list = states_data.state.to_list()
-        states_not_guessed = []
-        for state in all_states_as_list:
-            if state not in states_guessed:
-                states_not_guessed.append(state)
+        states_not_guessed = [state for state in all_states_as_list if state not in states_guessed]
         new_data = {
             "states_not_guessed": states_not_guessed
         }
