@@ -73,6 +73,41 @@ def add_password():
             password_entry.delete(0, END)
 
 
+def find_website():
+    website_to_search = website_input.get()
+    if not website_to_search:
+        messagebox.showerror(
+            title="No website", message="You must write a website before searching"
+        )
+    else:
+        try:
+            with open(
+                "./day_29_build_password_manager_app/data.json", mode="r"
+            ) as password_manager:
+                data = json.load(password_manager)
+        except:
+            messagebox.showerror(
+                title="No saved passwords",
+                message="Your file with passwords is empty or does not exist",
+            )
+        else:
+            try:
+                print(data)
+                print(data)
+                username = data[website_to_search]["email"]
+                password = data[website_to_search]["password"]
+            except:
+                messagebox.showerror(
+                    title="No such website",
+                    message="You do not have such a website in your password database",
+                )
+            else:
+                messagebox.showinfo(
+                    title=f"Credentials for {website_to_search}",
+                    message=f"Email: {username}\nPassword: {password}",
+                )
+
+
 # ---------------------------- UI SETUP ------------------------------- #
 
 window = Tk()
@@ -94,8 +129,8 @@ password_label = Label(text="Password:")
 password_label.grid(column=0, row=3)
 
 # Entries
-website_input = Entry(width=35)
-website_input.grid(row=1, column=1, columnspan=2)
+website_input = Entry(width=21)
+website_input.grid(row=1, column=1, columnspan=1)
 website_input.focus()
 email_input = Entry(width=35)
 email_input.grid(column=1, row=2, columnspan=2)
@@ -110,6 +145,8 @@ generate_password_button = Button(
 generate_password_button.grid(row=3, column=2)
 add_button = Button(text="Add", width=36, command=add_password)
 add_button.grid(row=4, column=1, columnspan=2)
+search_website_button = Button(text="Search", bg="blue", width=10, command=find_website)
+search_website_button.grid(row=1, column=2)
 
 
 window.mainloop()
