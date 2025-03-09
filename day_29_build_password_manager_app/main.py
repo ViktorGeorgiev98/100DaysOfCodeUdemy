@@ -4,6 +4,7 @@ from tkinter import messagebox
 import random
 import string
 import pyperclip
+import json
 
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
@@ -29,6 +30,7 @@ def add_password():
     website = website_input.get()
     email = email_input.get()
     password = password_entry.get()
+    new_data = {website: {"email": email, "password": password}}
     if not website or not email or not password:
         messagebox.showerror(
             title="All fields are mandatory!",
@@ -41,12 +43,34 @@ def add_password():
     )
     if is_ok:
         new_entry = f"{website} | {email} | {password}"
-        with open(
-            "./day_29_build_password_manager_app/data.txt", mode="a"
-        ) as password_manager:
-            password_manager.write(f"\n{new_entry}")
-        website_input.delete(0, END)
-        password_entry.delete(0, END)
+        # write to json file
+        # json.dump(new_data, password_manager, indent=4)
+        # read json file
+        # data = json.load(password_manager)
+        # print(data)
+        # update json file
+        # first read old data, then update old data with new data, save updated data with the normal json write method
+        # data.update(new_data)
+        # json.dump(data, password_manager, indent=4)
+        try:
+            with open(
+                "./day_29_build_password_manager_app/data.json", mode="r"
+            ) as password_manager:
+                data = json.load(password_manager)
+        except FileNotFoundError:
+            with open(
+                "./day_29_build_password_manager_app/data.json", mode="w"
+            ) as password_manager:
+                json.dump(new_data, password_manager, indent=4)
+        else:
+            data.update(new_data)
+            with open(
+                "./day_29_build_password_manager_app/data.json", mode="w"
+            ) as password_manager:
+                json.dump(data, password_manager, indent=4)
+        finally:
+            website_input.delete(0, END)
+            password_entry.delete(0, END)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
