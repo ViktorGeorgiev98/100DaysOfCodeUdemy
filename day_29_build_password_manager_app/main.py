@@ -92,8 +92,6 @@ def find_website():
             )
         else:
             try:
-                print(data)
-                print(data)
                 username = data[website_to_search]["email"]
                 password = data[website_to_search]["password"]
             except:
