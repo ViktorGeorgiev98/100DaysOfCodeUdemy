@@ -7,11 +7,11 @@ import smtplib
 # # # transport layer security, this will encrypt the message so no one else can read it
 # # connection.starttls()
 # # # login
-# # connection.login(user=my_email, password="neshtositam1234!!??")
+# # connection.login(user=my_email, password="111")
 # # # send email
 # # connection.sendmail(
 # #     from_addr=my_email,
-# #     to_addrs="viktor_georgiev98@abv.bg",
+# #     to_addrs="1111",
 # #     msg="Subject: Hello\n\nThis is coding test",
 # # )
 # # # close connection
@@ -19,7 +19,7 @@ import smtplib
 # with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
 #     try:
 #         connection.starttls()
-#         connection.login(user=my_email, password="")
+#         connection.login(user=my_email, password="111")
 #         connection.sendmail(
 #             from_addr=my_email,
 #             to_addrs="1111",
