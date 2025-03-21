@@ -1,6 +1,7 @@
 import requests
 from datetime import datetime
 import os
+
 # constants
 GENDER = "male"
 WEIGHT_KG = 68
@@ -12,9 +13,7 @@ SECRET_KEY = "1"
 
 exercise_endpoint = "1"
 exercise_text = input("Tell me which exercises you did: ")
-sheety_endpoint = (
-    f"1"
-)
+sheety_endpoint = "1"
 
 headers = {"x-app-id": APP_ID, "x-app-key": API_KEY}
 
@@ -45,7 +44,7 @@ def get_date_now() -> list:
 def put_exercises_to_google_sheets(exercises: list) -> None:
     for exercise in exercises:
         time_now = get_date_now()
-        bearer_headers = {"Authorization": f"Bearer {SECRET_KEY}}"
+        bearer_headers = {"Authorization": f"Bearer {SECRET_KEY}"}
         params = {
             "workout": {
                 "date": time_now[0],
