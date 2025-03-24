@@ -1,0 +1,43 @@
+html {
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  background-color: black;
+}
+
+main {
+  /* padding: 40px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  display: block;
+  width: 700px;
+  height: auto;
+  border: 3px solid #fff;
+  border-radius: 4px;
+}
+
+h1 {
+  font-size: 56px;
+  color: #fff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 22px;
+  color: #fff;
+  letter-spacing: 1px;
+}
