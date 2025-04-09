@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block title %}Restaurants{% endblock %} {% block
+styles %} {{super()}} {% endblock %} {% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>All Cafes</h1>
+
+      <div class="cafe-table">
+        {% for cafe in cafes %}
+        <div class="cafe-card mb-4 p-3 border rounded bg-light">
+          <h2>{{ cafe[0] }}</h2>
+          <p>
+            <strong>Location:</strong>
+            <a href="{{ cafe[1] }}" target="_blank">{{ cafe[1] }}</a>
+          </p>
+          <p><strong>Open:</strong> {{ cafe[2] }}</p>
+          <p><strong>Close:</strong> {{ cafe[3] }}</p>
+          <p><strong>Coffee:</strong> {{ cafe[4] }}</p>
+          <p><strong>Wifi:</strong> {{ cafe[5] }}</p>
+          <p><strong>Power:</strong> {{ cafe[6] }}</p>
+        </div>
+        {% endfor %}
+        <p><a href="#">Return to index page</a></p>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+</div>

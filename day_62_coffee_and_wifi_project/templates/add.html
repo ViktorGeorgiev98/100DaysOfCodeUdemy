@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block title %}Add A New Cafe{% endblock %} {% block
+content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8">
+      <h1>Add a new cafe into the database</h1>
+
+      <form action="{{ url_for('add_cafe') }}" method="post">
+        {{ form.csrf_token }}
+
+        <!-- Cafe name -->
+        {{ form.cafe.label(class="form-label") }} {{
+        form.cafe(class="form-control", placeholder="Enter cafe name") }} {% for
+        error in form.cafe.errors %}
+        <div class="text-danger">{{ error }}</div>
+        {% endfor %}
+
+        <!-- Cafe location -->
+        {{ form.location.label(class="form-label") }} {{
+        form.location(class="form-control", placeholder="Enter cafe location")
+        }} {% for error in form.location.errors %}
+        <div class="text-danger">{{ error }}</div>
+        {% endfor %}
+
+        <!-- Cafe rating -->
+        {{ form.cafe_rating.label(class="form-label") }} {{
+        form.cafe_rating(class="form-control", placeholder="Enter cafe rating")
+        }} {% for error in form.cafe_rating.errors %}
+        <div class="text-danger">{{ error }}</div>
+        {% endfor %}
+
+        <!-- Submit button -->
+        {{ form.submit(class="btn btn-primary mt-3") }}
+      </form>
+
+      <p class="space-above mt-4">
+        <a href="{{ url_for('cafes') }}">See all cafes</a>
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

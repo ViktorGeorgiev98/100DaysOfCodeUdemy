@@ -1,0 +1,36 @@
+/* This CSS file will need to be added to the styling of 
+your web pages for the styles to be rendered. */
+
+body {
+  background-color: #333;
+  color: white;
+}
+
+a {
+  color: #ffc107;
+}
+
+.jumbotron {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  height: 100vh;
+  color: white;
+  background-color: #333;
+}
+
+.space-above {
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.cafe-table {
+  width: 100%;
+  border-radius: 5px;
+  border: 2px solid #ffc107;
+  background-color: #444;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  justify-content: center;
+  align-items: center;
+}
